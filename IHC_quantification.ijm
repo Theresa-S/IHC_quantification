@@ -128,7 +128,7 @@ function saving(){
 	run("Images to Stack", "name=" + name + "_evaluation title=[] use");
 	savename = path + name + "_evaluation";
 	saveAs(".Tiff", savename);
-	saveresults = path + name + "_results.xls";
+	saveresults = path + name + "_results.csv";
 	saveAs("Results", saveresults);
 	
 	//exit the programm
