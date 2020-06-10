@@ -63,13 +63,12 @@ function preprocessing(){//Prepare the picture for processing --> make RGB and a
 	
 	//This is used to get rid of artefacts or non-tumor tissue in the histology picture
 	//If your background is perfect, you can skip this step and comment it out with "//"
-	//by painting the area black, it gets assigned the grey value 0. This will be converted to background in the next steps
 	waitForUser("Background correction", "Artefacts in the background can screw up your thresholding. \nChoose the color picker and click on representative background. \nUse Flood fill tool and paint tool to get an even backround. \nYou can also remove tissue you want to exclude from evaluation. \nClick ok to proceed.");
 	run("Duplicate...", "title=[Tumor_mask]");
 	run("8-bit");
 
-	//split the DAB image into color channels; close the not needed channels:
-	//depending on your IHC staining, you need to choose the appropriate vector
+	//split the image into color channels; close the not needed channels:
+	//depending on your IHC staining, you need to choose the appropriate vector (here: DAB staining)
 	selectWindow("Composite (RGB)");
 	run("Colour Deconvolution", "vectors=[H DAB] hide");
 	close("Composite (RGB)-(Colour_3)");
@@ -83,7 +82,7 @@ function preprocessing(){//Prepare the picture for processing --> make RGB and a
 };
 
 function thresholding(){
-// for this function it is necessary to adjust the thresholding method according to your imaging data
+// for this function it is necessary to adjust the thresholding methods according to your imaging data
 	
 	//calculate the area of the complete tumor
 	selectWindow("Tumor_mask");
