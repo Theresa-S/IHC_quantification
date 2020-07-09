@@ -6,7 +6,7 @@
 // Happy image evaluation :-)
 
 // Copyright 2020, Theresa Suckert, OncoRay/DKTK Dresden
-// email: theresa.suckert@dkfz-heidelberg.de
+// email: t.suckert@dkfz-heidelberg.de
 
 // Redistribution and use in source and binary forms, with or without modification, 
 // are permitted provided that the following conditions are met:
