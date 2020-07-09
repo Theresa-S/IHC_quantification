@@ -1,5 +1,13 @@
-//Copyright 2020, Theresa Suckert, OncoRay/DKTK Dresden
- 
+// This is an ImageJ macro for semi-automated quantification of IHC images (default: %area, cell number)
+// First you have the option to manually correct the background. Markers are seperated with color deconvolution --> choose the appropriate vector
+// Then the marker and the total area get segmented with an *automated* threshold. Please don't do this step manually to avoid observer bias!
+// Choose the respective thresholding method with care, this is the most crucial step of the evaluation pipeline! 
+// Finally, measurements are done on the segmented images and the results are saved. The specific measurements are defined in line 42
+// Happy image evaluation :-)
+
+// Copyright 2020, Theresa Suckert, OncoRay/DKTK Dresden
+// email: theresa.suckert@dkfz-heidelberg.de
+
 // Redistribution and use in source and binary forms, with or without modification, 
 // are permitted provided that the following conditions are met:
 // 
@@ -62,6 +70,7 @@ function preprocessing(){//Prepare the picture for processing --> make RGB and a
 	selectWindow("Composite (RGB)");
 	
 	//This is used to get rid of artefacts or non-tumor tissue in the histology picture
+	//Artefacts are e.g. black edges to due image aquisition or dust specs 
 	//If your background is perfect, you can skip this step and comment it out with "//"
 	waitForUser("Background correction", "Artefacts in the background can screw up your thresholding. \nChoose the color picker and click on representative background. \nUse Flood fill tool and paint tool to get an even backround. \nYou can also remove tissue you want to exclude from evaluation. \nClick ok to proceed.");
 	run("Duplicate...", "title=[Tumor_mask]");
